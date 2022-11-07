@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+    <style>
+        input.ng-pristine{background-color: aqua;}
+        input.ng-touched.ng-invalid{ background-color: blueviolet;}
+        input.ng-touched.ng-valid{background-color: brown;}
+    </style>
+</head>
+<body>
+<div ng-app>
+    <h3>Form validate 2</h3>
+    <hr>
+    <form name="myForm">
+        <label for="">Username: </label>
+        <input type="text" ng-model="userName" name="userName" ng-minlength=3 required>
+        <p ng-show="myForm.userName.$error.minlength" style="color:red ;">
+        min-length is 3 !!!
+        </p>
+        <br>
+        <label for="">Email: </label>
+        <input type="email" ng-model="email" name="email" ng-minlength=9 required>
+        <p ng-show="myForm.email.$error.email" style="color:red">
+            Not valid email !!!
+        </p>
+        <p ng-show="myForm.email.$error.minlength" style="color:red">
+            min-length is 9 !!!
+        </p>
+        <br>
+        <label for="">Final mark: </label>
+        <input type="number" ng-model="number" name="number" ng-min="0" ng-max="100" required>
+        <p ng-show="myForm.number.$error.min">
+            Not valid mark !!!
+        </p>
+        <p ng-show="myForm.number.$error.max">
+            Not valid mark !!!
+        </p>
+        <br>
+        <button type="submit" ng-disabled="myForm.$invalid">Submit</button>
+    </form>
+</div>
+</body>
+</html>
